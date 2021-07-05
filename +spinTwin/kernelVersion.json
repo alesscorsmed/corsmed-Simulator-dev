@@ -1,0 +1,8 @@
+{
+ "version":     "v3.1",
+ "kernelPath":  "/efs-mount-point/S20/PROJECTS/dev/kernels/",
+ "refKernel":   "v30_20210302_ufm",
+ "simKernel":   "sim31_ufm",
+ "sbrKernel":   "sbr31_ufm",
+ "devKernel":   "dev31_ufm"
+}

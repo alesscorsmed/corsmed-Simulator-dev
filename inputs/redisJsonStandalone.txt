@@ -1,0 +1,8 @@
+#address
+cache.internal.integration.corsmed.com
+#port
+6379
+#inputBufferSize
+10000000
+#outputBufferSize
+10000000

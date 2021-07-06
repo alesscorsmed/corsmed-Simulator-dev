@@ -62,8 +62,15 @@ end
 numFE   = encPlan.numFE;
 numPE   = encPlan.numPE;
 numSE   = encPlan.numSE;
-numREPS = acqData.reps;
+
+% check total number of readout lines we will get
+shots = length(acqData.rfmod);
+% how many full kspaces encoding can we fit into the schedule ?
+numREPS = floor(shots / (numSE*numPE));
 numENC  = numSE*numPE*numREPS;
+% discard to round as int the number of kspaces collected > ASSUMPTION
+acqData.rfmod = acqData.rfmod(1:numENC);
+
 
 %% prepare the encoding levels to apply
 numREP              = numENC + acqData.dummySSFP; % add dummy to real enc
@@ -105,10 +112,10 @@ rfEncodingLevels(idxRealReps) = rfEncodingLevels(idxRealReps).* ...
 rfEncodingLevels(idxDummy) = rfEncodingLevels(idxDummy).* ...
     cos(encPlan.encPhase(acqData.dummySSFP+1:-1:2));
 
-%% apply arbitrary RF scaling (sinusoidal train-like)
-if isfield(expControl.sequence,'rfCosTrain') && expControl.sequence.rfCosTrain
+%% apply arbitrary RF scaling
+if isfield(acqData,'rfmod')
     rfEncodingLevels(idxRealReps) = rfEncodingLevels(idxRealReps).* ...
-        abs(sin(6*(idxRealReps-idxRealReps(1))*pi/180))';
+        reshape(acqData.rfmod,size(rfEncodingLevels(idxRealReps)));
 end
 
 %% allocate space

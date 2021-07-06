@@ -42,12 +42,11 @@ acquisition.data.sliceThickness     = fovZ;
 acquisition.data.TE                 = 5e-3;
 acquisition.data.TR                 = 10e-3;
 acquisition.prepIR.TI               = 50e-3;
+acquisition.data.reps               = 3;
 
-shots                               = acquisition.data.numPE * 4;
-acquisition.data.rfmod              = abs(sin(2*(1:shots)'*pi/180));
 
-%br = @(x)abs(sin(2*(x)*pi/180));
-%plot(1:64*10,br(1:64*10))
+
+
 
 
 % apply encoding

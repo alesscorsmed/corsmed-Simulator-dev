@@ -562,7 +562,7 @@ switch lower(acquisition.data.pulseSeqFamilyName)
         acquisition.data.forceMinTR = 1; % to concatenate
         
         % define spoiling:
-        acquisition.data.spoiled = 1;
+        acquisition.data.spoiled = 0;
         
         % do not deactivate slice selection: multi-slice for 3D
         expControl.sequence.deactivateSS = 0;
@@ -572,9 +572,6 @@ switch lower(acquisition.data.pulseSeqFamilyName)
         
         % skip preparation after inversion (not SS anyway)
         acquisition.data.dummySSFP       = 0;
-        
-        % use a cos-modulated train of pulses (arbitrary)
-        expControl.sequence.rfCosTrain   = 1;
         
         % build it
         [pulseSequence] = sequence.familyGRE.irFISP(...

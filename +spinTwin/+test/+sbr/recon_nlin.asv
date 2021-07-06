@@ -14,16 +14,16 @@ clear all; close all; clc;
 % sizes for the original acquisition
 dx = 1e-3;      dy = 1e-3;      dz = 1e-3;
 fovX = 0.100;   fovY = 0.100;   fovZ = 3*dz;
-
-% generate target model and sequence > TSE
+% generate target model and sequence
 % [pulseSequence,simModel,motionModel,mrSystem] = ...
 %     spinTwin.test.sbr.utils.prepareExperiment( fovX, fovY, fovZ, dx, dy, dz );
 
-% % generate target model and sequence > bSSFP train
+
+% % generate target model and sequence > 
 % [pulseSequence,simModel,motionModel,mrSystem] = ...
 %     spinTwin.test.sbr.utils.prepareExperimentDyn( fovX, fovY, fovZ, dx, dy, dz );
 
-% generate target model and sequence > FISP train
+% generate target model and sequence
 [pulseSequence,simModel,motionModel,mrSystem] = ...
     spinTwin.test.sbr.utils.prepareExperimentFISP( fovX, fovY, fovZ, dx, dy, dz );
 
